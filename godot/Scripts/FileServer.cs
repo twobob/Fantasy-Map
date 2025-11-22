@@ -1,5 +1,6 @@
 using System;
 using System.Net;
+using System.IO;
 using Godot;
 
 namespace Janphe
@@ -42,12 +43,11 @@ namespace Janphe
             // check if file exist at folder (need to assume a base local root)
             var fullPath = "res://public" + Uri.UnescapeDataString(request.uri.LocalPath);
             // get file extension to add to header
-            var fileExt = System.IO.Path3D.GetExtension(fullPath);
+            var fileExt = System.IO.Path.GetExtension(fullPath);
             //Debug.Log($"fullPath:{fullPath} fileExt:{fileExt}");
 
-            var f = new Godot.File();
             // not found
-            if (!f.FileExists(fullPath))
+            if (!FileAccess.FileExists(fullPath))
             {
                 response.statusCode = 404;
                 response.message = "Not Found";
@@ -59,16 +59,13 @@ namespace Janphe
             response.message = "OK";
             response.headers.Add("Content-Type", MimeTypeMap.GetMimeType(fileExt));
 
-            var ret = f.Open(fullPath, Godot.File.ModeFlags.Read);
-            // read file and set bytes
-            if (ret == Error.Ok)
+            using var f = FileAccess.Open(fullPath, FileAccess.ModeFlags.Read);
+            if (f != null)
             {
                 var length = (int)f.GetLength();
-                // add content length
                 response.headers.Add("Content-Length", length.ToString());
                 response.SetBytes(f.GetBuffer(length));
             }
-            f.Close();
         }
 
     }

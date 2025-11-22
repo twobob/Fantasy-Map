@@ -10,7 +10,7 @@ namespace FantasyMap
 {
     using Random = Janphe.Random;
 
-    class MapJobsScreen : Panel
+    partial class MapJobsScreen : Panel
     {
         private MapJobs _mapJobs;
         private bool _needUpdate;
@@ -85,7 +85,7 @@ namespace FantasyMap
             CallDeferred("start");
         }
 
-        public override void _Process(float delta)
+        public override void _Process(double delta)
         {
             if (_needUpdate)
             {
@@ -93,15 +93,14 @@ namespace FantasyMap
 
                 if (texture == null)
                 {
-                    texture = new ImageTexture();
-                    texture.CreateFromImage(image);
+                    texture = ImageTexture.CreateFromImage(image);
                 }
                 else
                 {
                     if (image.GetFormat() == texture.GetFormat())
-                        texture.SetData(image);
+                        texture.Update(image);
                 }
-                Update();// for call _Draw
+                QueueRedraw();// for call _Draw
             }
         }
 
@@ -120,9 +119,9 @@ namespace FantasyMap
             areaSize = GetParentAreaSize();// cannot be read during _Ready
 
             _mapJobs = new MapJobs();
-            _mapJobs.Options.Width = (int)areaSize.x;
-            _mapJobs.Options.Height = (int)areaSize.y;
-            Debug.Log($"GetParentAreaSize w:{areaSize.x} h:{areaSize.y}");
+            _mapJobs.Options.Width = (int)areaSize.X;
+            _mapJobs.Options.Height = (int)areaSize.Y;
+            Debug.Log($"GetParentAreaSize w:{areaSize.X} h:{areaSize.Y}");
 
             generate();
         }
@@ -149,8 +148,7 @@ namespace FantasyMap
                 Debug.Log($"MapJobs.processAsync t:{t}ms");
 
                 var bitmap = _mapJobs.Bitmap;
-                image = new Image();
-                image.CreateFromData(bitmap.Width, bitmap.Height, false, Image.Format.Rgba8, bitmap.Bytes);
+                image = Image.CreateFromData(bitmap.Width, bitmap.Height, false, Image.Format.Rgba8, bitmap.Bytes);
                 _needUpdate = true;
             });
         }
@@ -158,7 +156,7 @@ namespace FantasyMap
 
         public void _on_ViewportContainer_MoveTo(Vector2 position)
         {
-            _mapJobs.Translate(position.x, position.y);
+            _mapJobs.Translate(position.X, position.Y);
             generate();
         }
 
@@ -166,7 +164,7 @@ namespace FantasyMap
         public void _on_ViewportContainer_ZoomTo(Vector2 position, float scale)
         {
             _mapJobs.Scale(scale, scale);
-            _mapJobs.Translate(position.x, position.y);
+            _mapJobs.Translate(position.X, position.Y);
             generate();
         }
 

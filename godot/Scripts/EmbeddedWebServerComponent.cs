@@ -40,7 +40,7 @@ namespace Janphe
             server.Dispose();
         }
 
-        public override void _Process(float delta)
+        public override void _Process(double delta)
         {
             if (server.processRequestsInMainThread)
             {

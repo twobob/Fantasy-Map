@@ -2,8 +2,8 @@ using Godot;
 
 namespace FantasyMap
 {
-	class MoveAndZoom : Control
-	{
+        partial class MoveAndZoom : Control
+        {
 		[Export] private NodePath mapJobsScreen { get; set; }
 		private MapJobsScreen screen { get; set; }
 
@@ -18,12 +18,12 @@ namespace FantasyMap
 		private Vector2 locPosition;
 		private float locScale;
 
-		private void start()
-		{
-                        _absSize = RectSize;// cannot be read during _Ready
-			locPosition = new Vector2(0, 0);
-			locScale = 1;
-		}
+                private void start()
+                {
+                        _absSize = Size;// cannot be read during _Ready
+                        locPosition = new Vector2(0, 0);
+                        locScale = 1;
+                }
 
 		//=====================================================================
 		private bool buttonPressed = false;
@@ -34,27 +34,27 @@ namespace FantasyMap
 			if (@event is InputEventMouseButton)
 			{
 				var evt = (InputEventMouseButton)@event;
-				switch ((ButtonList)evt.ButtonIndex)
-				{
-					case ButtonList.Left:
-						buttonPressed = evt.Pressed;
-						if (buttonPressed)
-							lastMousePosition = evt.GlobalPosition;
-						else
-							moveTo(evt.GlobalPosition - lastMousePosition);
-						break;
-					case ButtonList.WheelUp:
-						lastMousePosition = evt.GlobalPosition;
-						if (evt.Pressed)
-							zoomBy(_absSize * 0.1f);
-						else
-							zoomTo(_absSize * 0.1f);
-						break;
-					case ButtonList.WheelDown:
-						lastMousePosition = evt.GlobalPosition;
-						if (evt.Pressed)
-							zoomBy(_absSize * -0.1f);
-						else
+                                switch ((MouseButton)evt.ButtonIndex)
+                                {
+                                        case MouseButton.Left:
+                                                buttonPressed = evt.Pressed;
+                                                if (buttonPressed)
+                                                        lastMousePosition = evt.GlobalPosition;
+                                                else
+                                                        moveTo(evt.GlobalPosition - lastMousePosition);
+                                                break;
+                                        case MouseButton.WheelUp:
+                                                lastMousePosition = evt.GlobalPosition;
+                                                if (evt.Pressed)
+                                                        zoomBy(_absSize * 0.1f);
+                                                else
+                                                        zoomTo(_absSize * 0.1f);
+                                                break;
+                                        case MouseButton.WheelDown:
+                                                lastMousePosition = evt.GlobalPosition;
+                                                if (evt.Pressed)
+                                                        zoomBy(_absSize * -0.1f);
+                                                else
 							zoomTo(_absSize * -0.1f);
 						break;
 				}
@@ -85,20 +85,20 @@ namespace FantasyMap
 		private Vector2 _pivotPS(Vector2 p, float s) => _pivotPS(p, s, lastMousePosition);
 		private Vector2 _pivotPS(Vector2 p, float s, Vector2 m) => ((m / s) - p) / _absSize;
 
-		private void zoomTo(Vector2 p)
-		{
-			var scale = locScale * (1 + p.x / _absSize.x);
-			p = locPosition * locScale / scale + (locScale - scale) * _absSize * _pivotPS(locPosition, locScale) / scale;
+                private void zoomTo(Vector2 p)
+                {
+                        var scale = locScale * (1 + p.X / _absSize.X);
+                        p = locPosition * locScale / scale + (locScale - scale) * _absSize * _pivotPS(locPosition, locScale) / scale;
 
 			locPosition = p;
 			locScale = scale;
 			//Debug.Log($"zoomTo 1111 locPosition:{locPosition} locScale:{locScale}");
 
-		}
-		private void zoomBy(Vector2 p)
-		{
-			var scale = locScale * (1 + p.x / _absSize.x);
-			p = locPosition * locScale / scale + (locScale - scale) * _absSize * _pivotPS(locPosition, locScale) / scale;
+                }
+                private void zoomBy(Vector2 p)
+                {
+                        var scale = locScale * (1 + p.X / _absSize.X);
+                        p = locPosition * locScale / scale + (locScale - scale) * _absSize * _pivotPS(locPosition, locScale) / scale;
 			//Debug.Log($"zoomBy 2222 _pivot:{_pivotPS(locPosition, locScale)}=>{_pivotPS(p, scale)} p:{locPosition}=>{p}");
 
 			screen._on_ViewportContainer_ZoomTo(p, scale);
