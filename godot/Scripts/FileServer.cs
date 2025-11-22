@@ -2,6 +2,7 @@ using System;
 using System.Net;
 using System.IO;
 using Godot;
+using GodotFileAccess = Godot.FileAccess;
 
 namespace Janphe
 {
@@ -47,7 +48,7 @@ namespace Janphe
             //Debug.Log($"fullPath:{fullPath} fileExt:{fileExt}");
 
             // not found
-            if (!FileAccess.FileExists(fullPath))
+            if (!GodotFileAccess.FileExists(fullPath))
             {
                 response.statusCode = 404;
                 response.message = "Not Found";
@@ -59,7 +60,7 @@ namespace Janphe
             response.message = "OK";
             response.headers.Add("Content-Type", MimeTypeMap.GetMimeType(fileExt));
 
-            using var f = FileAccess.Open(fullPath, FileAccess.ModeFlags.Read);
+            using var f = GodotFileAccess.Open(fullPath, GodotFileAccess.ModeFlags.Read);
             if (f != null)
             {
                 var length = (int)f.GetLength();

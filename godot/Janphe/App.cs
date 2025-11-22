@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Runtime.InteropServices;
 using Godot;
+using FileAccess = Godot.FileAccess;
 
 namespace Janphe
 {
@@ -9,11 +10,9 @@ namespace Janphe
     {
         public static byte[] LoadData(string path)
         {
-            var f = new Godot.File();
-            f.Open($"res://public/{path}", Godot.File.ModeFlags.Read);
+            using var f = FileAccess.Open($"res://public/{path}", FileAccess.ModeFlags.Read);
 
             var buffer = f.GetBuffer((int)f.GetLength());
-            f.Close();
             return buffer;
         }
 
