@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using Godot;
 using FileAccess = Godot.FileAccess;
@@ -40,7 +41,8 @@ namespace Janphe
         public static string[] GetLocales()
         {
             var loaded = TranslationServer.GetLoadedLocales();
-            var locales = new string[loaded.Count];
+            var localeCount = loaded.Length;
+            var locales = new string[localeCount];
             for (var i = 0; i < locales.Length; ++i)
                 locales[i] = loaded[i] as string;
             return locales;

@@ -1,43 +1,41 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=7 format=3 uid="uid://ba3qqu2yt2nlp"]
 
-[ext_resource path="res://Scripts/MapJobsScreen.cs" type="Script" id=1]
-[ext_resource path="res://Scripts/EmbeddedWebServerComponent.cs" type="Script" id=2]
-[ext_resource path="res://MapJobs_theme.tres" type="Theme" id=3]
-[ext_resource path="res://Scripts/FileServer.cs" type="Script" id=4]
-[ext_resource path="res://Scripts/MoveAndZoom.cs" type="Script" id=5]
-[ext_resource path="res://Scripts/FileServerApi.cs" type="Script" id=6]
+[ext_resource type="Script" uid="uid://di47bca5gdd70" path="res://Scripts/MapJobsScreen.cs" id="1"]
+[ext_resource type="Script" uid="uid://hftcj30l0lay" path="res://Scripts/EmbeddedWebServerComponent.cs" id="2"]
+[ext_resource type="Theme" path="res://MapJobs_theme.tres" id="3"]
+[ext_resource type="Script" uid="uid://cqbpkb2dwmicd" path="res://Scripts/FileServer.cs" id="4"]
+[ext_resource type="Script" uid="uid://bu2bx4kjtdts" path="res://Scripts/MoveAndZoom.cs" id="5"]
+[ext_resource type="Script" uid="uid://b8po0nwtc71ac" path="res://Scripts/FileServerApi.cs" id="6"]
 
 [node name="Node3D" type="Node3D"]
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 stretch = true
-script = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource("5")
 mapJobsScreen = NodePath("MapJobs")
 
 [node name="TextureRect" type="TextureRect" parent="SubViewportContainer"]
-self_modulate = Color( 0.627451, 0.65098, 1, 1 )
-anchor_right = 1.0
-anchor_bottom = 1.0
+self_modulate = Color(0.627451, 0.65098, 1, 1)
+layout_mode = 2
 stretch_mode = 2
 
 [node name="MapJobs" type="Panel" parent="SubViewportContainer"]
-theme = ExtResource( 3 )
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+layout_mode = 2
+theme = ExtResource("3")
+script = ExtResource("1")
 serverApi = NodePath("../../WebServer/FileServerApi")
 
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+size = Vector2i(1152, 648)
+
 [node name="WebServer" type="Node" parent="."]
-script = ExtResource( 2 )
+script = ExtResource("2")
 
 [node name="FileServer" type="Node" parent="WebServer"]
-script = ExtResource( 4 )
+script = ExtResource("4")
 
 [node name="FileServerApi" type="Node" parent="WebServer"]
-script = ExtResource( 6 )
+script = ExtResource("6")
