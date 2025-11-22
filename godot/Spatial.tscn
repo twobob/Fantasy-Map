@@ -15,21 +15,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 stretch = true
 script = ExtResource("5")
-mapJobsScreen = NodePath("MapJobs")
-
-[node name="TextureRect" type="TextureRect" parent="SubViewportContainer"]
-self_modulate = Color(0.627451, 0.65098, 1, 1)
-layout_mode = 2
-stretch_mode = 2
-
-[node name="MapJobs" type="Panel" parent="SubViewportContainer"]
-layout_mode = 2
-theme = ExtResource("3")
-script = ExtResource("1")
-serverApi = NodePath("../../WebServer/FileServerApi")
+mapJobsScreen = NodePath("SubViewport/MapJobs")
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 size = Vector2i(1152, 648)
+
+[node name="MapJobs" type="Panel" parent="SubViewportContainer/SubViewport"]
+layout_mode = 2
+theme = ExtResource("3")
+script = ExtResource("1")
+serverApi = NodePath("../../../WebServer/FileServerApi")
 
 [node name="WebServer" type="Node" parent="."]
 script = ExtResource("2")
