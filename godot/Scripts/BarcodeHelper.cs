@@ -10,6 +10,8 @@ using ZXing;
 using ZXing.Common;
 using ZXing.QrCode;
 using ZXing.QrCode.Internal;
+using ZXing.Rendering;
+using System.Runtime.InteropServices;
 
 namespace Janphe
 {
@@ -24,7 +26,7 @@ namespace Janphe
         /// <returns></returns>
         public static Bitmap Generate1(string text, int width, int height)
         {
-            var writer = new BarcodeWriter<Bitmap>
+            var writer = new BarcodeWriterPixelData
             {
                 Format = BarcodeFormat.QR_CODE,
                 Options = new QrCodeEncodingOptions()
@@ -35,10 +37,9 @@ namespace Janphe
                     Height = height,
                     Margin = 1// set QR code margin (not fixed pixels)
                 },
-                Renderer = new ZXing.Rendering.BitmapRenderer()
             };
 
-            return writer.Write(text);
+            return PixelDataToBitmap(writer.Write(text));
         }
 
         /// <summary>
@@ -50,10 +51,7 @@ namespace Janphe
         /// <returns></returns>
         public static Bitmap Generate2(string text, int width, int height)
         {
-            var writer = new BarcodeWriter<Bitmap>
-            {
-                Renderer = new ZXing.Rendering.BitmapRenderer()
-            };
+            var writer = new BarcodeWriterPixelData();
             // ITF cannot be scanned by common apps like Alipay or WeChat
             // Use CODE_128 instead if a broadly recognized format is required
             //writer.Format = BarcodeFormat.ITF;
@@ -65,8 +63,7 @@ namespace Janphe
                 Margin = 2
             };
             writer.Options = options;
-            Bitmap map = writer.Write(text);
-            return map;
+            return PixelDataToBitmap(writer.Write(text));
         }
 
         /// <summary>
@@ -89,11 +86,8 @@ namespace Janphe
             // Generate QR code
             BitMatrix bm = writer.encode(text, BarcodeFormat.QR_CODE, width + 30, height + 30, hint);
             bm = deleteWhite(bm);
-            var barcodeWriter = new BarcodeWriter<Bitmap>
-            {
-                Renderer = new ZXing.Rendering.BitmapRenderer()
-            };
-            Bitmap map = barcodeWriter.Write(bm);
+            var barcodeWriter = new BarcodeWriterPixelData();
+            Bitmap map = PixelDataToBitmap(barcodeWriter.Write(bm));
 
             // Get actual QR size after trimming blank edges
             int[] rectangle = bm.getEnclosingRectangle();
@@ -140,6 +134,22 @@ namespace Janphe
                 }
             }
             return resMatrix;
+        }
+
+        private static Bitmap PixelDataToBitmap(PixelData pixelData)
+        {
+            var bitmap = new Bitmap(pixelData.Width, pixelData.Height, PixelFormat.Format32bppArgb);
+            var bitmapData = bitmap.LockBits(new Rectangle(0, 0, pixelData.Width, pixelData.Height), ImageLockMode.WriteOnly, PixelFormat.Format32bppArgb);
+            try
+            {
+                Marshal.Copy(pixelData.Pixels, 0, bitmapData.Scan0, pixelData.Pixels.Length);
+            }
+            finally
+            {
+                bitmap.UnlockBits(bitmapData);
+            }
+
+            return bitmap;
         }
     }
 }

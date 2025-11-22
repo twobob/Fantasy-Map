@@ -10,10 +10,9 @@ namespace Janphe
 
         private static int GetRandomSeed()
         {
-            byte[] bytes = new byte[4];
-            var rng = new RNGCryptoServiceProvider();
-            rng.GetBytes(bytes);
-            return BitConverter.ToInt32(bytes, 0);
+            Span<byte> bytes = stackalloc byte[4];
+            RandomNumberGenerator.Fill(bytes);
+            return BitConverter.ToInt32(bytes);
         }
 
         public static void Seed(int seed)
