@@ -7,8 +7,8 @@ namespace Janphe
 {
     public static partial class Extension
     {
-        // 哇，最快稳定排序是这个
-        // 最好直接用IOrderedEnumerable 不要转成Array或者List，会降低效率
+        // Wow, this is the fastest stable sort here
+        // Ideally use IOrderedEnumerable directly instead of converting to Array or List to avoid slowing things down
         private class TComparer<T> : IComparer<T> { public Comparison<T> func { get; set; } public int Compare(T x, T y) => func(x, y); }
         public static IOrderedEnumerable<T> sort<T>(this IList<T> d, Comparison<T> comparison)
         { return d.OrderBy(x => x, new TComparer<T>() { func = comparison }); }

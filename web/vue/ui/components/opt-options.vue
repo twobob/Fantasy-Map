@@ -1,12 +1,12 @@
 <template>
-  <div>
-    <span>地图设置:</span>
+    <div>
+      <span>Map settings:</span>
 
     <opt-map-size :label="options['opt_map_size']"
                   v-model="setting.opt_map_size">
-      <span> - - - </span>
-      <el-button type="success"
-                 @click="generate">生成地图</el-button>
+        <span> - - - </span>
+        <el-button type="success"
+                   @click="generate">Generate map</el-button>
     </opt-map-size>
 
     <opt-map-slider v-for="(v,k) in limits"

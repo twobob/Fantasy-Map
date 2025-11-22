@@ -117,7 +117,7 @@ namespace FantasyMap
 
         private void start()
         {
-            areaSize = GetParentAreaSize();//不能在ready时候读取
+            areaSize = GetParentAreaSize();// cannot be read during _Ready
 
             _mapJobs = new MapJobs();
             _mapJobs.Options.Width = (int)areaSize.x;

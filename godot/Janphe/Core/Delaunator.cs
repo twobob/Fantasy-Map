@@ -601,17 +601,17 @@ namespace Janphe
                 }
             }
 
-            // 代表 _r_vertex.index
+            // Represents _r_vertex.index
             var _triangles_r = new int[numSolidSides + 3 * numUnpairedSides];
             Array.Copy(_triangles, _triangles_r, numSolidSides);
 
-            // 代表 _triangles_r.index
+            // Represents _triangles_r.index
             var _halfedges_s = new int[numSolidSides + 3 * numUnpairedSides];
             Array.Copy(_halfedges, _halfedges_s, numSolidSides);
 
             for (int i = 0, s = firstUnpairedEdge; i < numUnpairedSides; i++)
             {
-                var ghost_s = numSolidSides + 3 * i;// 虚边开始的索引
+                var ghost_s = numSolidSides + 3 * i;// index where ghost edges begin
 
                 // Construct the the ghost triangle
                 _triangles_r[ghost_s] = _triangles_r[s_next_s(s)];

@@ -88,7 +88,7 @@ namespace Janphe.Fantasy.Map
             }
         }
 
-        // 评估小格子的宜居性
+        // Evaluate the habitability of small cells
         // assess cells suitability to calculate population and rand cells for culture center and burgs placement
         public void rankCells()
         {

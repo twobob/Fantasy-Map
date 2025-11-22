@@ -8,6 +8,6 @@ namespace Janphe.Fantasy.Map
         public string stroke;
         public float strokeWidth;
         public string filter;
-        public bool autoFilter;//缩放画布自动调整
+        public bool autoFilter;// automatically adjust when zooming the canvas
     }
 }

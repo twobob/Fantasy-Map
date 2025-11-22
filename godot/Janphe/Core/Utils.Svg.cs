@@ -18,7 +18,7 @@ namespace Janphe
            T = smooth quadratic Bézier curveto
            A = elliptical Arc                     SKPath.ArcTo
            Z = closepath
-           注意：以上所有命令均允许小写字母。大写表示绝对定位，小写表示相对定位。
+           Note: all commands also allow lowercase letters. Uppercase means absolute positioning, lowercase means relative positioning.
          */
 
         public static SKPath linePoly(IList<SKPoint> pp) => linePoly(pp, true);

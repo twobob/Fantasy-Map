@@ -11,15 +11,15 @@
               class="input-width-min"
               type="number"
               :disabled="lock"
-              @input="on_size_w"
-              placeholder="宽度"></el-input>
+               @input="on_size_w"
+               placeholder="Width"></el-input>
     <span>x</span>
     <el-input :value="size.h"
               class="input-width-min"
               type="number"
               :disabled="lock"
-              @input="on_size_h"
-              placeholder="高度"></el-input>
+               @input="on_size_h"
+               placeholder="Height"></el-input>
     <slot></slot>
   </el-row>
 </template>

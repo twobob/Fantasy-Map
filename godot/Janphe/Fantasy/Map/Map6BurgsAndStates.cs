@@ -59,7 +59,7 @@ namespace Janphe.Fantasy.Map
             cells.road = new ushort[n];// cell road power
             cells.crossroad = new ushort[n];// cell cell crossroad power
 
-            pack.burgs = placeStateCapitals(); // 势力首都
+            pack.burgs = placeStateCapitals(); // faction capitals
             pack.states = createStates();
 
             //Debug.SaveArray("pack.burgs.txt", pack.burgs.map(s => s == null ? "" : $"{'{'}'cell':{s.cell},'x':{s.x},'y':{s.y},'state':{s.state},'i':{s.i},'culture':{s.culture},'name':'{s.name}','feature':{s.feature},'capital':{s.capital}{'}'}"));
@@ -792,7 +792,7 @@ namespace Janphe.Fantasy.Map
             {
                 var @base = pack.cultures[s.culture].@base;
 
-                if (s.form == "Monarchy")//君主政体, 君主国, 君主政治
+                if (s.form == "Monarchy")// monarchy
                 {
                     var form = monarchy[expTiers[s.i]].Value<string>();
                     // Default name depends on exponent tier, some culture bases have special names for tiers
@@ -827,7 +827,7 @@ namespace Janphe.Fantasy.Map
                     return form;
                 }
 
-                if (s.form == "Republic")//共和国, 共和政体, 团体, 界
+                if (s.form == "Republic")// republic
                 {
                     // Default name is from weighted array, special case for small states with only 1 burg
                     if (expTiers[s.i] < 2 && s.burgs == 1)
@@ -843,10 +843,10 @@ namespace Janphe.Fantasy.Map
                     return rw(republic);
                 }
 
-                if (s.form == "Union")//联盟, 联合, 结合, 工会
+                if (s.form == "Union")// union
                     return rw(union);
 
-                if (s.form == "Theocracy")//神权政治, 神权国
+                if (s.form == "Theocracy")// theocracy
                 {
                     // default name is "Theocracy", some culture bases have special names
                     if (new int[] { 0, 1, 2, 3, 4, 6, 8, 9, 13, 15, 20 }.includes(@base))
@@ -1039,7 +1039,7 @@ namespace Janphe.Fantasy.Map
                 if (0 == s.provinces.Count)
                     return;
                 var stateNoProvince = noProvince.filter(i => cells.state[i] == s.i && 0 == cells.province[i])
-                    // IEnumerable不能多次使用，所以转成数组
+                    // IEnumerable cannot be enumerated multiple times, so convert to an array
                     .ToArray();
                 //msg.push($"stateNoProvince:{stateNoProvince.join()}");
                 while (stateNoProvince.Count() > 0)
@@ -1216,7 +1216,7 @@ namespace Janphe.Fantasy.Map
                 if (ar == null)
                     return;
                 var sorted = ar.sort((a, b) => b.Count() - a.Count()); // sort by points number
-                var polygon = sorted.map(p => p.ToArray()).First();//取第一个最大区域
+                var polygon = sorted.map(p => p.ToArray()).First();// take the first (largest) region
                 //polygon.map(p => p.join(",")).forEach((p, k) => msg.push($"{i} {k} {p}"));
 
                 states[i].pole = polygon.polylabel(1.0); // pole of inaccessibility
@@ -1275,7 +1275,7 @@ namespace Janphe.Fantasy.Map
                 if (ar == null)
                     return;
                 var sorted = ar.sort((a, b) => b.Count() - a.Count()); // sort by points number
-                var polygon = sorted.map(p => p.ToArray()).First();//取第一个最大区域
+                var polygon = sorted.map(p => p.ToArray()).First();// take the first (largest) region
 
                 provinces[i].pole = polygon.polylabel(1.0); // pole of inaccessibility
             });
@@ -1663,7 +1663,7 @@ namespace Janphe.Fantasy.Map
         public void drawStateLabels(SKCanvas canvas, Func<string, SKTypeface> faceFunc)
         {
             var scale = canvas.TotalMatrix.ScaleX;
-            var text_stateSize = 22f;//默认字体大小
+            var text_stateSize = 22f;// default font size
 
             var desired = text_stateSize;
             var relative = Math.Max(rn((desired + desired / scale) / 2, 2), 1);

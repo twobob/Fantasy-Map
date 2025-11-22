@@ -16,11 +16,11 @@ namespace Janphe
     public class BarcodeHelper
     {
         /// <summary>
-        /// 生成二维码
+        /// Generate a QR code
         /// </summary>
-        /// <param name="text">内容</param>
-        /// <param name="width">宽度</param>
-        /// <param name="height">高度</param>
+        /// <param name="text">Content to encode</param>
+        /// <param name="width">Image width</param>
+        /// <param name="height">Image height</param>
         /// <returns></returns>
         public static Bitmap Generate1(string text, int width, int height)
         {
@@ -28,11 +28,11 @@ namespace Janphe
             writer.Format = BarcodeFormat.QR_CODE;
             QrCodeEncodingOptions options = new QrCodeEncodingOptions()
             {
-                DisableECI = true,//设置内容编码
-                CharacterSet = "UTF-8",  //设置二维码的宽度和高度
+                DisableECI = true,// configure content encoding
+                CharacterSet = "UTF-8",  // configure QR code size
                 Width = width,
                 Height = height,
-                Margin = 1//设置二维码的边距,单位不是固定像素
+                Margin = 1// set QR code margin (not fixed pixels)
             };
 
             writer.Options = options;
@@ -41,17 +41,17 @@ namespace Janphe
         }
 
         /// <summary>
-        /// 生成一维条形码
+        /// Generate a 1D barcode
         /// </summary>
-        /// <param name="text">内容</param>
-        /// <param name="width">宽度</param>
-        /// <param name="height">高度</param>
+        /// <param name="text">Content to encode</param>
+        /// <param name="width">Image width</param>
+        /// <param name="height">Image height</param>
         /// <returns></returns>
         public static Bitmap Generate2(string text, int width, int height)
         {
             BarcodeWriter writer = new BarcodeWriter();
-            //使用ITF 格式，不能被现在常用的支付宝、微信扫出来
-            //如果想生成可识别的可以使用 CODE_128 格式
+            // ITF cannot be scanned by common apps like Alipay or WeChat
+            // Use CODE_128 instead if a broadly recognized format is required
             //writer.Format = BarcodeFormat.ITF;
             writer.Format = BarcodeFormat.CODE_39;
             EncodingOptions options = new EncodingOptions()
@@ -66,32 +66,32 @@ namespace Janphe
         }
 
         /// <summary>
-        /// 生成带Logo的二维码
+        /// Generate a QR code with an embedded logo
         /// </summary>
-        /// <param name="text">内容</param>
-        /// <param name="width">宽度</param>
-        /// <param name="height">高度</param>
-        /// <param name="logoStream">Logo 图片</param>
+        /// <param name="text">Content to encode</param>
+        /// <param name="width">Image width</param>
+        /// <param name="height">Image height</param>
+        /// <param name="logoStream">Logo image stream</param>
         public static Bitmap Generate3(string text, int width, int height, Stream logoStream)
         {
             Bitmap logo = new Bitmap(logoStream);
-            //构造二维码写码器
+            // Build the QR writer
             MultiFormatWriter writer = new MultiFormatWriter();
             Dictionary<EncodeHintType, object> hint = new Dictionary<EncodeHintType, object>();
             hint.Add(EncodeHintType.CHARACTER_SET, "UTF-8");
             hint.Add(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);
-            //hint.Add(EncodeHintType.MARGIN, 2);//旧版本不起作用，需要手动去除白边
+            //hint.Add(EncodeHintType.MARGIN, 2);// not effective in older versions; white edges must be removed manually
 
-            //生成二维码 
+            // Generate QR code
             BitMatrix bm = writer.encode(text, BarcodeFormat.QR_CODE, width + 30, height + 30, hint);
             bm = deleteWhite(bm);
             BarcodeWriter barcodeWriter = new BarcodeWriter();
             Bitmap map = barcodeWriter.Write(bm);
 
-            //获取二维码实际尺寸（去掉二维码两边空白后的实际尺寸）
+            // Get actual QR size after trimming blank edges
             int[] rectangle = bm.getEnclosingRectangle();
 
-            //计算插入图片的大小和位置
+            // Calculate the size and position for the logo
             int middleW = Math.Min((int)(rectangle[2] / 3), logo.Width);
             int middleH = Math.Min((int)(rectangle[3] / 3), logo.Height);
             int middleL = (map.Width - middleW) / 2;
@@ -104,7 +104,7 @@ namespace Janphe
                 g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
                 g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
                 g.DrawImage(map, 0, 0, width, height);
-                //白底将二维码插入图片
+                // Insert the QR code into the image on a white background
                 g.FillRectangle(Brushes.White, middleL, middleT, middleW, middleH);
                 g.DrawImage(logo, middleL, middleT, middleW, middleH);
             }
@@ -112,7 +112,7 @@ namespace Janphe
         }
 
         /// <summary>
-        /// 删除默认对应的空白
+        /// Remove the default white padding around the QR code
         /// </summary>
         /// <param name="matrix"></param>
         /// <returns></returns>

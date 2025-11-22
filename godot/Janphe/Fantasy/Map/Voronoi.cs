@@ -19,14 +19,14 @@ namespace Janphe.Fantasy.Map
             var numSides = voronoi.numSides;
             var numTriangles = voronoi.numTriangles;
 
-            cells = new Cells()//数组大小为区域数
+            cells = new Cells()// array size equals number of regions
             {
                 v = new int[numRegions][],
                 r_neighbor_r = new int[numRegions][],
                 r_near_border = new bool[numRegions],
                 //i = new int[numTriangles][],
             };
-            vertices = new Vertices()//数组大小为三角数
+            vertices = new Vertices()// array size equals number of triangles
             {
                 t_points = new double[numTriangles][],
                 v = new int[numTriangles][],
