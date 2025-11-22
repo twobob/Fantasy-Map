@@ -124,7 +124,7 @@ namespace Janphe.Fantasy.Map
                 var sx = r.s / svg.ViewBox.Width;
                 var sy = r.s / svg.ViewBox.Height;
 
-                var mat = SKMatrix.MakeIdentity();
+                var mat = SKMatrix.CreateIdentity();
                 mat.SetScaleTranslate(sx, sy, r.x, r.y);
 
                 canvas.DrawPicture(svg.Picture, ref mat);
