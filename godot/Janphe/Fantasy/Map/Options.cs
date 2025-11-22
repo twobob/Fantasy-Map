@@ -122,7 +122,7 @@ namespace Janphe.Fantasy.Map
 
         public string GetOptions()
         {
-            // 使用JObject键名会乱序
+            // Using JObject directly will randomize key order
             //var obj = new Dictionary<string, string>();
             var obj = new JObject();
             for (var i = 0; i < (int)MapSetting.count; ++i)

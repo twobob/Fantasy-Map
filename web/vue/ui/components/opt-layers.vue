@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <!-- <el-divider></el-divider> -->
-    <span>图层显示以及排序:</span>
+    <div>
+      <!-- <el-divider></el-divider> -->
+      <span>Layer visibility and order:</span>
     <el-checkbox-group v-model="checkboxGroup1"
                        @change="onChange">
       <el-row v-for="(row,i) in layout"

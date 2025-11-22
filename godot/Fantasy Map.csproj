@@ -154,7 +154,7 @@
   <Import Project="packages\SkiaSharp.1.68.1.1\build\net45\SkiaSharp.targets" Condition="Exists('packages\SkiaSharp.1.68.1.1\build\net45\SkiaSharp.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
-      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+      <ErrorText>The NuGet packages referenced by this project are missing on this computer. Use "NuGet Package Restore" to download these packages. For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Text="$([System.String]::Format('$(ErrorText)', 'packages\SkiaSharp.1.68.1.1\build\net45\SkiaSharp.targets'))" Condition="!Exists('packages\SkiaSharp.1.68.1.1\build\net45\SkiaSharp.targets')" />
   </Target>

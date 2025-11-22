@@ -5,7 +5,7 @@ import api from './api/index'
 import 'element-ui/lib/theme-chalk/index.css';
 
 axios.defaults.baseURL = '/api';
-// 配置拦截器携带token
+// Configure interceptor to include token
 axios.interceptors.request.use(config => {
   config.headers["token"] = "xxxx";
   return config

@@ -1,15 +1,15 @@
 <template>
-  <el-tabs v-model="activeName" @tab-click="handleClick">
-    <el-tab-pane label="图层" name="1st">
-      <opt-layers />
-    </el-tab-pane>
-    <el-tab-pane label="风格" name="2nd">风格调整</el-tab-pane>
-    <el-tab-pane label="参数" name="3rd">
-      <opt-options />
-    </el-tab-pane>
-    <el-tab-pane label="工具" name="4th">可视工具</el-tab-pane>
-    <el-tab-pane label="关于" name="5ve">有点时间</el-tab-pane>
-  </el-tabs>
+    <el-tabs v-model="activeName" @tab-click="handleClick">
+      <el-tab-pane label="Layers" name="1st">
+        <opt-layers />
+      </el-tab-pane>
+      <el-tab-pane label="Style" name="2nd">Style options</el-tab-pane>
+      <el-tab-pane label="Options" name="3rd">
+        <opt-options />
+      </el-tab-pane>
+      <el-tab-pane label="Tools" name="4th">Visual tools</el-tab-pane>
+      <el-tab-pane label="About" name="5ve">Coming soon</el-tab-pane>
+    </el-tabs>
 </template>
 
 <script>

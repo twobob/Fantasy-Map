@@ -136,7 +136,7 @@ namespace Janphe.Fantasy.Map
                 //msg.push($"expansion:{expansion} expansionism:{expansionism} {center} {origin}");
             }
 
-            // generate cults 膜拜, 礼拜式, 祭仪, 一群信徒
+            // generate cults (ritual worshippers)
             for (var i = 0; religions.Count < count + cultsCount && i < 1000; i++)
             {
                 var form = Utils.rw(forms["Cult"]);
@@ -180,7 +180,7 @@ namespace Janphe.Fantasy.Map
 
             expandReligions(religions);
 
-            // generate heresies 异端, 异教
+            // generate heresies
             religions.filter(r => r.type == "Organized").ToList().forEach(r =>
             {
                 if (r.expansionism < 3)
@@ -460,7 +460,7 @@ namespace Janphe.Fantasy.Map
             string type()
             { return Utils.rw(types[form]); }
             string supreme()
-            { return deity.split(" ,")[0]; }//(级别或地位) 最高的，至高无上的; (程度) 很大的，最大的;
+            { return deity.split(" ,")[0]; }// supreme; greatest in degree or status
             string place(string adj = null)
             {
                 var @base = cells.burg[center] != 0 ? pack.burgs[cells.burg[center]].name : pack.states[cells.state[center]].name;

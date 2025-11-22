@@ -78,7 +78,7 @@ const pro2 = new Promise((resolve, reject) => {
           }
         },
         plugins: [
-          new VueLoaderPlugin(),//必需
+          new VueLoaderPlugin(),// required
           new MiniCssExtractPlugin({
             filename: 'style.css'
           })
@@ -139,7 +139,7 @@ let mode = process.argv[2]
 let production = mode.includes('mode=production')
 
 module.exports = new Promise((resolve, reject) => {
-  // 不同框架放在下面不同处理
+  // Handle different frameworks separately below
   Promise.all([pro1, pro2]).then(array => {
     var bb = []
     array.forEach(a => bb.push(...a))

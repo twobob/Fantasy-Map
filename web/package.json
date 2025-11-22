@@ -1,7 +1,7 @@
 {
   "name": "fantasy-map-ui",
   "version": "0.0.1",
-  "description": "设置界面",
+  "description": "Settings interface",
   "main": "index.js",
   "dependencies": {
     "axios": "^0.19.2",

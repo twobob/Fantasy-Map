@@ -61,14 +61,14 @@ namespace Janphe.Fantasy.Map
         }
         private void addStep(string a1, string a2, string a3, string a4, string a5)
         {
-            if (a1 == "Hill") addHill(a2, a3, a4, a5);                 //已验证
+            if (a1 == "Hill") addHill(a2, a3, a4, a5);                 // verified
             else if (a1 == "Pit") addPit(a2, a3, a4, a5);
-            else if (a1 == "Range") addRange(a2, a3, a4, a5);          //已验证
-            else if (a1 == "Trough") addTrough(a2, a3, a4, a5);        //已验证
-            else if (a1 == "Strait") addStrait(a2, a3);                //已验证
-            else if (a1 == "Add") modify(a3, double.Parse(a2), 1);     //已验证
+            else if (a1 == "Range") addRange(a2, a3, a4, a5);          // verified
+            else if (a1 == "Trough") addTrough(a2, a3, a4, a5);        // verified
+            else if (a1 == "Strait") addStrait(a2, a3);                // verified
+            else if (a1 == "Add") modify(a3, double.Parse(a2), 1);     // verified
             else if (a1 == "Multiply") modify(a3, 0, double.Parse(a2));
-            else if (a1 == "Smooth") smooth(double.Parse(a2));         //已验证
+            else if (a1 == "Smooth") smooth(double.Parse(a2));         // verified
         }
 
         private double getBlobPower()

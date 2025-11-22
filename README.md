@@ -1,15 +1,15 @@
-# Godot版 Fantasy Map Generator
+# Godot Edition of Fantasy Map Generator
 
-尝试 Azgaar's _Fantasy Map Generator_. 翻译成C#版本
+An attempt to port Azgaar's _Fantasy Map Generator_ to C#.
 
-# 我的开发环境
+# Development Environment
 
-* win10 x64
-* godot-3.2.2-stable mono 版本
-* vs2017 C#环境
+* Windows 10 x64
+* godot-3.2.2-stable mono edition
+* Visual Studio 2017 with C#
 
-# 编译运行
+# Build & Run
 
-* 首先用vs打开godot/Fantasy Map.sln项目，右键解决方案还原nuget依赖包（即Json.Net、SkiaSharp等库）；
-  此时在vs点击编辑会提示缺少GodotSharp.dll，所以需要用godot打开项目准备引擎库。
-* 然后godot打开项目运行。
+* Open the `godot/Fantasy Map.sln` project in Visual Studio and restore NuGet packages (Json.Net, SkiaSharp, etc.).
+  Visual Studio may warn about a missing `GodotSharp.dll`; open the project in Godot to prepare the engine library.
+* Run the project from Godot after the dependencies are restored.
