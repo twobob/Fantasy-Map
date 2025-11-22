@@ -5,7 +5,7 @@ using System.Linq;
 /** - [Guide to data structures](https://mapbox.github.io/delaunator/) */
 namespace Janphe
 {
-    public class Delaunator
+    public partial class Delaunator
     {
         private double EPSILON = Math.Pow(2, -52);
         private int[] EDGE_STACK = new int[512];

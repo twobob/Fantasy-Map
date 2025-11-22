@@ -290,7 +290,7 @@ namespace Janphe.Fantasy.Map
             return name + suffix;
         }
 
-        public class Names { public string name; public int i, min, max; public string d; public double m; public string b; }
+        public partial class Names { public string name; public int i, min, max; public string d; public double m; public string b; }
         public static Names[] getNameBases()
         {
             // name, min length, max length, letters to allow duplication, multi-word name rate

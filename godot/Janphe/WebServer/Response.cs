@@ -7,7 +7,7 @@ using System.IO;
 namespace Janphe
 {
 
-    public class Response
+    public partial class Response
     {
         public int statusCode = 404;
         public string message = "Not Found";

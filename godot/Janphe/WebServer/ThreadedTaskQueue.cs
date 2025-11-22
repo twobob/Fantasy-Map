@@ -6,7 +6,7 @@ using System;
 namespace Janphe
 {
 
-    public class ThreadedTaskQueue : IDisposable
+    public partial class ThreadedTaskQueue : IDisposable
     {
 
         Queue<System.Action> taskQueue = new Queue<System.Action>();

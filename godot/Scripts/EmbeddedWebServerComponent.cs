@@ -10,7 +10,7 @@ namespace Janphe
 {
 
 
-    public class EmbeddedWebServerComponent : Node
+    public partial class EmbeddedWebServerComponent : Node
     {
         public bool startOnAwake = true;
         public int port = 8079;

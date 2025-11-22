@@ -4,7 +4,7 @@ namespace Janphe.Fantasy.Map
 {
     internal partial class MapJobs : JobThread, IDisposable
     {
-        public class Coordinates
+        public partial class Coordinates
         {
             public double latT;
             public double latN;

@@ -7,7 +7,7 @@ namespace Janphe.Fantasy.Map
 {
     internal class Grid
     {
-        public class Burg
+        public partial class Burg
         {
             public int cell;
             public ushort i, state, culture, feature, capital, port;
@@ -20,14 +20,14 @@ namespace Janphe.Fantasy.Map
             // defineBurgFeatures 城堡, 市场, 城墙, 棚屋, 教堂
             public byte citadel, plaza, walls, shanty, temple;
         }
-        public class Province
+        public partial class Province
         {
             public int i, state, center, burg;
             public string name, formName, fullName, color;
             public bool removed = false;
             public double[] pole;
         }
-        public class State
+        public partial class State
         {
             public int center;
             public ushort i, capital, culture;
@@ -46,7 +46,7 @@ namespace Janphe.Fantasy.Map
             public List<ushort> provinces;
             public double[] pole;
         }
-        public class Religion
+        public partial class Religion
         {
             public int i, culture, center, origin;
             public string name, code, color, type, form, deity;
@@ -58,7 +58,7 @@ namespace Janphe.Fantasy.Map
             public ushort cells, area;
             public double rural, urban;
         }
-        public class Culture
+        public partial class Culture
         {
             public string name;
             public int i;
@@ -75,7 +75,7 @@ namespace Janphe.Fantasy.Map
 
             public bool removed = false;
         }
-        public class River
+        public partial class River
         {
             public int i { get; set; }
             public int parent { get; set; }
@@ -83,12 +83,12 @@ namespace Janphe.Fantasy.Map
             public int mouth { get; set; }
             public double length { get; set; }
         }
-        public class RiverPath
+        public partial class RiverPath
         {
             public int r; public double[][] path; public double width, increment;
         }
 
-        public class Feature
+        public partial class Feature
         {
             public int i { get; set; }
             public bool land { get; set; }
@@ -105,7 +105,7 @@ namespace Janphe.Fantasy.Map
             public int river { get; set; }
             public int flux { get; set; }
         }
-        public class Cells
+        public partial class Cells
         {
             public int[][] v { get; set; }//v = cell vertices,
             public int[][] r_raycast_s { get; set; }
@@ -154,7 +154,7 @@ namespace Janphe.Fantasy.Map
             public ushort[] religion { get; set; }
             public ushort[] province { get; set; }
         }
-        public class Vertices
+        public partial class Vertices
         {
             public double[][] p { get { return t_points; } }
             public double[][] t_points { get; set; }//p = vertex coordinates

@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace Janphe
 {
-    public class MultiPartEntry
+    public partial class MultiPartEntry
     {
         public readonly Headers headers;
 

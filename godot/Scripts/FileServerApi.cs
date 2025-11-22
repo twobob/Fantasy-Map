@@ -8,7 +8,7 @@ using Godot;
 
 namespace Janphe
 {
-    public class FileServerApi : Node, IWebResource
+    public partial class FileServerApi : Node, IWebResource
     {
         EmbeddedWebServerComponent server;
 

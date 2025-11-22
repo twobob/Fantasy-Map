@@ -13,7 +13,7 @@ using ZXing.QrCode.Internal;
 
 namespace Janphe
 {
-    public class BarcodeHelper
+    public partial class BarcodeHelper
     {
         /// <summary>
         /// 生成二维码

@@ -9,7 +9,7 @@ namespace Janphe
     /// <summary>
     /// Headers is a collection class for HTTP style headers.
     /// </summary>
-    public class Headers
+    public partial class Headers
     {
 
         /// <summary>

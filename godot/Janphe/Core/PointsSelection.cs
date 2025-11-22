@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Janphe
 {
-    public class PointsSelection
+    public partial class PointsSelection
     {
 
         // add boundary points to pseudo-clip voronoi cells

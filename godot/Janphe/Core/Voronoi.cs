@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Janphe
 {
-    public class Voronoi
+    public partial class Voronoi
     {
         public int numSides { get { return s_triangles_r.Length; } }
         public int numTriangles { get { return numSides / 3; } }

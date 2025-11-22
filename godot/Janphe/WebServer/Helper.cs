@@ -14,7 +14,7 @@ namespace Janphe
          */
         public static string GetFolderRoot(string folderPath)
         {
-            string folderName = Path.GetDirectoryName(folderPath);
+            string folderName = Path3D.GetDirectoryName(folderPath);
             if (folderName.Length <= 2)
                 return folderName;
             var idx = folderName.IndexOf("/", 1, StringComparison.InvariantCulture);

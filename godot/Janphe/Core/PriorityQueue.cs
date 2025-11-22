@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Janphe
 {
-    public class PriorityQueue<T>
+    public partial class PriorityQueue<T>
     {
         private List<T> data;
         private Comparison<T> __compare;

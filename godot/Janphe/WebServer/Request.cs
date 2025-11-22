@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Janphe
 {
-    public class Request
+    public partial class Request
     {
         public string method, path, protocol, query, fragment;
         public Uri uri;

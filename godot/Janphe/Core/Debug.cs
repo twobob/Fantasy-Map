@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Janphe
 {
-    public class Debug
+    public partial class Debug
     {
 #if DEBUG
         const bool Enable = true;

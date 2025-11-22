@@ -80,7 +80,7 @@ namespace Janphe
             return (real_t)Math.Cosh(s);
         }
 
-        public static real_t Deg2Rad(real_t deg)
+        public static real_t DegToRad(real_t deg)
         {
             return deg * Deg2RadConst;
         }
@@ -263,7 +263,7 @@ namespace Janphe
             return (real_t)Math.Pow(x, y);
         }
 
-        public static real_t Rad2Deg(real_t rad)
+        public static real_t RadToDeg(real_t rad)
         {
             return rad * Rad2DegConst;
         }
@@ -335,7 +335,7 @@ namespace Janphe
             return 0;
         }
 
-        public static real_t Stepify(real_t s, real_t step)
+        public static real_t Snapped(real_t s, real_t step)
         {
             if (step != 0f)
             {

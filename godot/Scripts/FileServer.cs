@@ -4,7 +4,7 @@ using Godot;
 
 namespace Janphe
 {
-    public class FileServer : Node, IWebResource
+    public partial class FileServer : Node, IWebResource
     {
         static string GetLocalIp()
         {
@@ -42,7 +42,7 @@ namespace Janphe
             // check if file exist at folder (need to assume a base local root)
             var fullPath = "res://public" + Uri.UnescapeDataString(request.uri.LocalPath);
             // get file extension to add to header
-            var fileExt = System.IO.Path.GetExtension(fullPath);
+            var fileExt = System.IO.Path3D.GetExtension(fullPath);
             //Debug.Log($"fullPath:{fullPath} fileExt:{fileExt}");
 
             var f = new Godot.File();
@@ -63,7 +63,7 @@ namespace Janphe
             // read file and set bytes
             if (ret == Error.Ok)
             {
-                var length = (int)f.GetLen();
+                var length = (int)f.GetLength();
                 // add content length
                 response.headers.Add("Content-Length", length.ToString());
                 response.SetBytes(f.GetBuffer(length));

@@ -8,7 +8,7 @@ using Float = System.Single;
 
 namespace Janphe
 {
-    public class Rander
+    public partial class Rander
     {
         public const int DIVISOR = 0x10000000;
 

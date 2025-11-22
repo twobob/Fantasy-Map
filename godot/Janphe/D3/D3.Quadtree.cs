@@ -5,9 +5,9 @@ namespace Janphe
 {
     public partial class D3
     {
-        public class IQuadtree<K, V>
+        public partial class IQuadtree<K, V>
         {
-            public class Value
+            public partial class Value
             {
                 public K x, y;
                 public V v;
@@ -45,7 +45,7 @@ namespace Janphe
 
         }
 
-        public class Quadtree : IQuadtree<double, int>
+        public partial class Quadtree : IQuadtree<double, int>
         {
 
             public static Quadtree add(Quadtree tree, double x, double y, Value d)

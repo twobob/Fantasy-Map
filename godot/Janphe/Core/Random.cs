@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Janphe
 {
-    public class Random
+    public partial class Random
     {
         private static Rander random { get; set; } = new Rander(0);
 

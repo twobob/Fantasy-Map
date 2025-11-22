@@ -4,7 +4,7 @@ using System;
 
 namespace Janphe
 {
-    public class WebServer : IDisposable
+    public partial class WebServer : IDisposable
     {
         public readonly int port = 8079;
         public readonly int workerThreads = 2;

@@ -481,7 +481,7 @@ namespace Janphe.Fantasy.Map
             if (m == "Supreme + ism" && !string.IsNullOrEmpty(deity))
                 return new string[] { Utils.trimVowels(supreme()) + "ism", "global" };
             if (m == "Faith of + Supreme" && !string.IsNullOrEmpty(deity))
-                return new string[] { Utils.ra(new string[] { "Faith", "Way", "Path", "Word", "Witnesses" }) + " of " + supreme(), "global" };
+                return new string[] { Utils.ra(new string[] { "Faith", "Way", "Path3D", "Word", "Witnesses" }) + " of " + supreme(), "global" };
             if (m == "Place + ism")
                 return new string[] { place() + "ism", "state" };
             if (m == "Culture + ism")

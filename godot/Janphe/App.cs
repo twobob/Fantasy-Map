@@ -5,14 +5,14 @@ using Godot;
 
 namespace Janphe
 {
-    public class App
+    public partial class App
     {
         public static byte[] LoadData(string path)
         {
             var f = new Godot.File();
             f.Open($"res://public/{path}", Godot.File.ModeFlags.Read);
 
-            var buffer = f.GetBuffer((int)f.GetLen());
+            var buffer = f.GetBuffer((int)f.GetLength());
             f.Close();
             return buffer;
         }

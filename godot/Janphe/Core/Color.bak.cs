@@ -151,7 +151,7 @@ namespace Janphe
             return res;
         }
 
-        public Color LinearInterpolate(Color c, float t)
+        public Color Lerp(Color c, float t)
         {
             var res = this;
 

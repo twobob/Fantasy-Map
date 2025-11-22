@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Janphe
 {
-    public class TinyQueue<T>
+    public partial class TinyQueue<T>
     {
         private List<T> data;
         private uint length;

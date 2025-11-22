@@ -3,7 +3,7 @@ using System.Threading;
 
 namespace Janphe
 {
-    public class JobThread
+    public partial class JobThread
     {
         protected bool working { get; private set; }
         protected bool waitJob { get; private set; }

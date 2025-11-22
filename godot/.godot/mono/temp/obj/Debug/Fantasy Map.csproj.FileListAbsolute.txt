@@ -1,0 +1,4 @@
+D:\repo\Fantasy-Map\godot\.godot\mono\temp\obj\Debug\Fantasy Map.csproj.AssemblyReference.cache
+D:\repo\Fantasy-Map\godot\.godot\mono\temp\obj\Debug\Fantasy Map.GeneratedMSBuildEditorConfig.editorconfig
+D:\repo\Fantasy-Map\godot\.godot\mono\temp\obj\Debug\Fantasy Map.csproj.CoreCompileInputs.cache
+D:\repo\Fantasy-Map\godot\.godot\mono\temp\obj\Debug\Fantasy Map.sourcelink.json
