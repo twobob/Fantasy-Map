@@ -12,7 +12,7 @@ namespace Janphe
         public static bool not(string d) { return string.IsNullOrEmpty(d); }
         public static bool @is(string d) { return !string.IsNullOrEmpty(d); }
 
-        // C#中的Math.Round()默认并不是使用的"四舍五入"法。
+        // C#'s Math.Round() does not use the traditional "round half up" rule by default.
         public static int round(double x) { return (int)Math.Round(x, MidpointRounding.AwayFromZero); }
         public static decimal round(decimal x) { return Math.Round(x, MidpointRounding.AwayFromZero); }
 
@@ -39,7 +39,7 @@ namespace Janphe
                 var f = Math.Floor(result);
                 return f + (P(result - f) ? 1 : 0);
             }
-            //int sign = r[0] == '-' ? -1 : 1;//以负数开始
+            //int sign = r[0] == '-' ? -1 : 1;// start with a negative number
 
             var range = s.Contains("-") ? s.Split('-') : null;
             if (range == null || range.Length != 2)
@@ -87,7 +87,7 @@ namespace Janphe
 
         //    var aa = angle(p1, p2);
         //    var cc = Vector3.Cross(p1, p2).z < 0;
-        //    if (cc) aa = 360 - aa;//反向旋转角度
+        //    if (cc) aa = 360 - aa;// reverse the rotation angle
         //    return aa;
         //}
 
@@ -98,7 +98,7 @@ namespace Janphe
         //    return ret;
         //}
 
-        // Array.Sort 为不稳定排序
+        // Array.Sort is an unstable sort
         public static T[] ArraySort<T>(T[] d, Comparison<T> comparison)
         {
             var w = new Stopwatch();
@@ -112,8 +112,8 @@ namespace Janphe
         }
 
         class TComparer<T> : IComparer<T> { public Comparison<T> func { get; set; } public int Compare(T x, T y) => func(x, y); }
-        // 哇，最快稳定排序是这个
-        // 最好直接用IOrderedEnumerable 不要转成Array或者List，会降低效率
+        // Wow, this is the fastest stable sort here
+        // Ideally use IOrderedEnumerable directly instead of converting to Array or List to avoid slowing things down
         public static IOrderedEnumerable<T> LinqSort<T>(IList<T> d, Comparison<T> comparison)
         {
             //var w = new Stopwatch();
@@ -137,7 +137,7 @@ namespace Janphe
             return ret;
         }
 
-        // 但是InsertionSort太慢了。。。
+        // But InsertionSort is too slow...
         public static void InsertionSort<T>(T[] d, Comparison<T> comparison)
         {
             var w = new Stopwatch();
@@ -160,7 +160,7 @@ namespace Janphe
             Debug.Log($"InsertionSort cost:{w.ElapsedMilliseconds}ms {w.ElapsedTicks}ts");
         }
 
-        // 这个冒泡排序最慢了
+        // This bubble sort implementation is the slowest
         public static void BubbleSort<T>(T[] a, Comparison<T> comparison)
         {
             var w = new Stopwatch();
@@ -243,7 +243,7 @@ namespace Janphe
             return setA.Where(_a => setB.Contains(_a));
         }
 
-        // check if char is vowel(元音)
+        // check if char is vowel
         public static bool vowel(char c) { return "aeiouy".IndexOf(c) != -1; }
         public static bool vowel(string c) { return "aeiouy".IndexOf(c) != -1; }
 

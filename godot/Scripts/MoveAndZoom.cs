@@ -20,7 +20,7 @@ namespace FantasyMap
 
 		private void start()
 		{
-			_absSize = Size;//不能在ready时候读取
+                        _absSize = RectSize;// cannot be read during _Ready
 			locPosition = new Vector2(0, 0);
 			locScale = 1;
 		}

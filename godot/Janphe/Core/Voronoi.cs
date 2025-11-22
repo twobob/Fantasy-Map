@@ -23,7 +23,7 @@ namespace Janphe
 
         public static int s_to_t(int s) { return (int)Math.Floor(s / 3.0); }
         public static int s_prev_s(int s) { return (s % 3 == 0) ? s + 2 : s - 1; }
-        // 边顺序顺时针方向
+        // Edge order is clockwise
         public static int s_next_s(int s) { return (s % 3 == 2) ? s - 2 : s + 1; }
 
         public static int[] t_circulate_s(int t) { var out_s = new int[3]; for (var i = 0; i < 3; i++) { out_s[i] = 3 * t + i; } return out_s; }
@@ -43,7 +43,7 @@ namespace Janphe
             return out_s.ToArray();
         }
 
-        // 以r为起点的边
+        // Edges that start from region r
         public int[][] r_raycast_s(int numRegions)
         {
             var raycast = new int[numRegions][];
@@ -81,7 +81,7 @@ namespace Janphe
                 if (out_s.Count > 20)
                     Debug.Log($"raycast_s {first_s} {oppo_s} {incoming}");
             } while (incoming != -1 && incoming != first_s);
-            ////丢弃不能走一圈的区域
+            //// discard regions that cannot complete a loop
             //if (incoming == -1)
             //{
             //    UnityEngine.Debug.Log($"incoming == -1 drop s:{first_s}");

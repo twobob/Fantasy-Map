@@ -87,7 +87,7 @@ namespace Janphe.Fantasy.Map
             Limits = limits;
             Paths = chains;
 
-            // 深浅不一的海岸线
+            // Coastlines with varying depths
             foreach (var t in limits)
             {
                 //const path = chains.filter(c => c[0] === t).map(c => round(lineGen(c[1]))).join();

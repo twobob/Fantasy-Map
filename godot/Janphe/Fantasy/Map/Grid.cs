@@ -17,7 +17,7 @@ namespace Janphe.Fantasy.Map
             public bool removed = false;
             public Quadtree tree;
 
-            // defineBurgFeatures 城堡, 市场, 城墙, 棚屋, 教堂
+            // defineBurgFeatures: castle, market, walls, shanty, temple
             public byte citadel, plaza, walls, shanty, temple;
         }
         public partial class Province

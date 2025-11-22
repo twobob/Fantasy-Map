@@ -62,7 +62,7 @@ namespace Janphe.Fantasy.Map
                 var points = vchain.Select(v => vertices.t_points[v]).ToArray();
                 var area = D3.polygonArea(points); // area with lakes/islands
                 //if (area > 0 && features[f].type == "lake")
-                if (area < 0)// area < 0 顺时针多边形 area > 0 逆时针多边形
+                if (area < 0)// area < 0 clockwise polygon, area > 0 counterclockwise polygon
                 {
                     points = points.Reverse().ToArray();
                     vchain = vchain.Reverse().ToArray();

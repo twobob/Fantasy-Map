@@ -126,4 +126,11 @@
     <PackageReference Include="SkiaSharp.Svg" Version="1.60.0" />
     <PackageReference Include="ZXing.Net" Version="0.16.5" />
   </ItemGroup>
+  <Import Project="packages\SkiaSharp.1.68.1.1\build\net45\SkiaSharp.targets" Condition="Exists('packages\SkiaSharp.1.68.1.1\build\net45\SkiaSharp.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>The NuGet packages referenced by this project are missing on this computer. Use "NuGet Package Restore" to download these packages. For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Text="$([System.String]::Format('$(ErrorText)', 'packages\SkiaSharp.1.68.1.1\build\net45\SkiaSharp.targets'))" Condition="!Exists('packages\SkiaSharp.1.68.1.1\build\net45\SkiaSharp.targets')" />
+  </Target>
 </Project>

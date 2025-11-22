@@ -23,7 +23,7 @@ namespace Janphe.Fantasy.Map
         {
             if (Bitmap == null)
             {
-                var info = new SKImageInfo(Options.Width, Options.Height, SKColorType.Rgba8888);//指定颜色格式
+                var info = new SKImageInfo(Options.Width, Options.Height, SKColorType.Rgba8888);// specify color format
                 Bitmap = new SKBitmap(info);
                 _surface = SKSurface.Create(info, Bitmap.GetPixels());
                 //_surface = SKSurface.Create(info, Bitmap.GetPixels(), Bitmap.Info.RowBytes);
@@ -39,8 +39,8 @@ namespace Janphe.Fantasy.Map
 
             if (isLayersOn(Layers.opt_layers_texture))
             {
-                drawOcean(canvas);//海购线
-                drawLandmass(canvas);//陆地
+                drawOcean(canvas);// coastline
+                drawLandmass(canvas);// land
             }
 
             if (isLayersOn(Layers.opt_layers_heightmap))
@@ -165,7 +165,7 @@ namespace Janphe.Fantasy.Map
                     paint.Style = SKPaintStyle.Stroke;
                     paint.Color = island.stroke.ToColor().Opacity(island.opacity).SK();
                     paint.StrokeWidth = island.strokeWidth;
-                    //! TODO 滤镜怎么实现
+                    //! TODO figure out how to implement filters
                     paint.MaskFilter = SKMaskFilter.CreateBlur(SKBlurStyle.Normal, 0.2f);
                     paths.ForEach(p => canvas.DrawPath(lineGenZ(p), paint));
                 }
