@@ -40,6 +40,7 @@
     <Compile Include="Janphe\Fantasy\Map\MapJobs.Opt.Options.cs" />
     <Compile Include="Janphe\Fantasy\Map\MapJobs.Opt.Layers.cs" />
     <Compile Include="Janphe\Fantasy\Map\MapJobs.Draw.Relief_Icons.cs" />
+    <Compile Include="Janphe\Fantasy\Map\MapPreview.cs" />
     <Compile Include="Janphe\Fantasy\Map\Style.cs" />
     <Compile Include="Janphe\WebServer\Headers.cs" />
     <Compile Include="Janphe\WebServer\Helper.cs" />
